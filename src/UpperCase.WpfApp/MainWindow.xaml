@@ -11,6 +11,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="12"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -24,11 +26,10 @@
                  MaxLength="8"
                  MinWidth="260"/>
 
-        <Button Grid.Row="2" Grid.Column="2"
+        <Button Grid.Row="8" Grid.Column="1"
                 Content="Convertir"
                 Padding="10,6"
-                HorizontalAlignment="Left"
-                Command="{Binding ConvertCommand}"/>
+                Command="{Binding ConvertCommand}" Margin="12,9,0,10" Grid.ColumnSpan="2" />
 
         <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Text="Résultat :"/>
         <TextBox Grid.Row="4" Grid.Column="2"
