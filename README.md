@@ -25,7 +25,7 @@ La logique métier et le ViewModel principal sont mutualisés dans un projet **U
    - `UpperCase.WpfApp` pour V2
 3. Build & Run
 
-> Remarque : la solution cible `.NET 6` (>= .NET Core 3.0 demandé).  
+> Remarque : la solution cible `.NET 10` (>= .NET Core 3.0 demandé).  
 > Si votre environnement impose une autre version, ajustez `TargetFramework` dans les `.csproj`.
 
 ## Tests de recette (à reproduire sur V1 et V2)

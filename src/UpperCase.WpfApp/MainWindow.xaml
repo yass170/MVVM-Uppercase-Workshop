@@ -32,7 +32,7 @@
 
         <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Text="Résultat :"/>
         <TextBox Grid.Row="4" Grid.Column="2"
-                 Text="{Binding OutputText}"
+                 Text="{Binding OutputText, Mode=OneWay}"
                  IsReadOnly="True"
                  MinWidth="260"/>
 
