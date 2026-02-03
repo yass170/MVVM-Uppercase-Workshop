@@ -1,0 +1,44 @@
+<Window x:Class="UpperCase.WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Convertisseur (MVVM - WPF)" Height="260" Width="520" WindowStartupLocation="CenterScreen">
+    <Grid Margin="14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="12"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Text="Saisie (1..8) :"/>
+        <TextBox Grid.Row="0" Grid.Column="2"
+                 Text="{Binding InputText, UpdateSourceTrigger=PropertyChanged}"
+                 MaxLength="8"
+                 MinWidth="260"/>
+
+        <Button Grid.Row="2" Grid.Column="2"
+                Content="Convertir"
+                Padding="10,6"
+                HorizontalAlignment="Left"
+                Command="{Binding ConvertCommand}"/>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Text="Résultat :"/>
+        <TextBox Grid.Row="4" Grid.Column="2"
+                 Text="{Binding OutputText}"
+                 IsReadOnly="True"
+                 MinWidth="260"/>
+
+        <TextBlock Grid.Row="6" Grid.Column="2"
+                   Text="{Binding ValidationMessage}"
+                   Foreground="DarkRed"
+                   TextWrapping="Wrap"/>
+    </Grid>
+</Window>

@@ -1,0 +1,18 @@
+@startuml
+title V1 (Console) — Diagramme de séquence
+
+actor Utilisateur
+participant "Program\n(View Console)" as V
+participant "MainViewModel\n(ViewModel)" as VM
+participant "TextConverter\n(Service)" as S
+
+Utilisateur -> V : saisit une chaîne (1..8)
+V -> VM : InputText = saisie
+V -> VM : Convert()
+VM -> S : ToUpperLettersOnly(InputText)
+S --> VM : chaîne convertie
+VM --> V : OutputText mis à jour
+V -> Utilisateur : affiche OutputText
+V -> Utilisateur : attend une touche (ReadKey)
+
+@enduml

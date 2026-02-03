@@ -1,0 +1,33 @@
+@startuml
+title V2 (WPF) — Diagramme de classes (MVVM)
+
+package "UpperCase.WpfApp (View)" {
+  class MainWindow <<View>> {
+    +MainWindow()
+  }
+}
+
+package "UpperCase.WpfApp (WPF MVVM)" {
+  class RelayCommand <<Infrastructure>> {
+    +CanExecute(parameter) : bool
+    +Execute(parameter) : void
+    +RaiseCanExecuteChanged() : void
+  }
+  class MainWindowViewModel <<ViewModel>> {
+    +ConvertCommand : ICommand
+  }
+}
+
+package "UpperCase.Core (ViewModel + Model/Service)" {
+  interface ITextConverter
+  class TextConverter <<Service>>
+  class MainViewModel <<ViewModel>>
+}
+
+MainWindow --> MainWindowViewModel : DataContext
+MainWindowViewModel --|> MainViewModel : hérite / réutilise
+MainWindowViewModel --> RelayCommand : commande
+MainViewModel --> ITextConverter : dépend de
+TextConverter ..|> ITextConverter
+
+@enduml

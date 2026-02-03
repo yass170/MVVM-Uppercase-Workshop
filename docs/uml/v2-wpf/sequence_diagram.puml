@@ -1,0 +1,25 @@
+@startuml
+title V2 (WPF) — Diagramme de séquence
+
+actor Utilisateur
+participant "MainWindow\n(View WPF)" as V
+participant "Binding WPF" as B
+participant "MainWindowViewModel\n(ViewModel)" as VM
+participant "TextConverter\n(Service)" as S
+
+Utilisateur -> V : saisit dans TextBox
+V -> B : met à jour la source
+B -> VM : InputText = nouveau texte
+
+Utilisateur -> V : clique sur "Convertir"
+V -> VM : ConvertCommand.Execute()
+
+VM -> VM : Convert()
+VM -> S : ToUpperLettersOnly(InputText)
+S --> VM : chaîne convertie
+VM -> VM : OutputText = résultat
+
+VM -> B : PropertyChanged(OutputText)
+B -> V : met à jour TextBox résultat
+
+@enduml

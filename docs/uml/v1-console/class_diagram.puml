@@ -1,0 +1,29 @@
+@startuml
+title V1 (Console) — Diagramme de classes (MVVM)
+
+package "UpperCase.ConsoleApp (View)" {
+  class Program <<View>> {
+    +Main()
+    -ReadValidInput() : string
+  }
+}
+
+package "UpperCase.Core (ViewModel + Model/Service)" {
+  interface ITextConverter
+  class TextConverter <<Service>>
+  abstract class ViewModelBase
+  class MainViewModel <<ViewModel>> {
+    +InputText : string
+    +OutputText : string
+    +ValidationMessage : string
+    +CanConvert : bool
+    +Convert() : void
+  }
+}
+
+Program --> MainViewModel : utilise
+MainViewModel --> ITextConverter : dépend de
+TextConverter ..|> ITextConverter
+MainViewModel --|> ViewModelBase
+
+@enduml
